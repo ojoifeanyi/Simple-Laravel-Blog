@@ -18,16 +18,16 @@
 <body class="w-full h-full bg-gray-100">
     <div class="w-4/5 mx-auto">
         <div class="text-center pt-20">
-            <h1 class="text-3xl text-gray-700">
-                All Articles
+            <h1 class="text-3xl text-gray-700 ">
+              Free Blog Article Site
             </h1>
             <hr class="border border-1 border-gray-300 mt-10">
         </div>
 
         <div class="py-10 sm:py-20">
-            <a class="primary-btn inline text-base sm:text-xl bg-green-500 py-4 px-4 shadow-xl rounded-full transition-all hover:bg-green-400"
+            <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-full transition-all hover:bg-gray-400"
                href="">
-                New Article
+                New Post
             </a>
         </div>
     </div>
