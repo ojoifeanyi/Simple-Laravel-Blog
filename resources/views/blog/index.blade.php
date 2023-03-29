@@ -16,16 +16,30 @@
     </title>
 </head>
 <body class="w-full h-full bg-gray-100">
-    <div class="w-4/5 mx-auto">
-        <div class="text-center pt-20">
-            <h1 class="text-3xl text-gray-700 ">
-              Free Blog Article Site
-            </h1>
-            <hr class="border border-1 border-gray-300 mt-10">
+    <!-- Top Bar Nav -->
+    <nav class="w-full py-4 bg-blue-800 shadow">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+
+            <nav>
+                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Home</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Login</a></li>
+                </ul>
+            </nav>
+
+            <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
+                Free Blog Article Site  
+            </div>
+    
         </div>
 
-        <div class="py-10 sm:py-20">
-            <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-full transition-all hover:bg-gray-400"
+    </nav>
+
+
+    <div class="w-4/5 mx-auto">
+        
+        <div class="py-10 sm:py-10">
+            <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
                href="{{ route ('blog.create') }}">
                 New Post
             </a>
@@ -46,7 +60,7 @@
                     {{ $post->excerpt }}
 
                 <span class="text-gray-500 text-sm sm:text-base">
-                   <br> Posted on: {{ $post->created_at }}
+                   <br> Posted on: {{ $post->created_at->format('d/m/y') }}
                 </span>
             </div>
         </div>
