@@ -7,6 +7,29 @@
     <title>Document</title>
 </head>
 <body>
+
+ <!-- Top Bar Nav -->
+ <nav class="w-full py-4 bg-blue-800 shadow">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+
+        <nav>
+            <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ route('blog.index') }}">Home</a></li>
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Login</a></li>
+            </ul>
+        </nav>
+
+        <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
+            Free Blog Article Site  
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+
 <div class="w-4/5 mx-auto">
     <div class="text-center pt-20">
         <h1 class="text-3xl text-gray-700">
