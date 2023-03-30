@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create','edit','update','destroy']);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,6 +37,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         Post::create([
+            'user_id' => $request->user_id,
             'title' => $request->title,
             'excerpt' => $request->excerpt,
             'body' => $request->body,

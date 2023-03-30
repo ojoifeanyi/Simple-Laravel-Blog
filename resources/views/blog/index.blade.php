@@ -23,7 +23,13 @@
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Home</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Login</a></li>
+                    @if (Auth::user())
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('dashboard') }}">Dashboard</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('logout') }}">Logout</a></li>
+                    @else
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
+                    @endif
+                   
                 </ul>
             </nav>
 
@@ -38,12 +44,15 @@
 
     <div class="w-4/5 mx-auto">
         
-        <div class="py-10 sm:py-10">
-            <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
-               href="{{ route ('blog.create') }}">
-                New Post
-            </a>
-        </div>
+      @if (Auth::user())
+      <div class="py-10 sm:py-10">
+        <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
+           href="{{ route ('blog.create') }}">
+            New Post
+        </a>
+    </div>
+      @endif
+
     </div>
 
     @foreach ($posts as $post)
@@ -60,7 +69,7 @@
                     {{ $post->excerpt }}
 
                 <span class="text-gray-500 text-sm sm:text-base">
-                   <br> Posted on: {{ $post->created_at->format('d/m/y') }}
+                   <br> Posted by {{ $post->user->name }} on: {{ $post->created_at->format('d/m/y') }}
                 </span>
             </div>
         </div>

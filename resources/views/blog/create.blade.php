@@ -48,11 +48,20 @@
         <label for="is_published" class="text-gray-500 text-2xl">
             Is Published
         </label>
+
         <input
             type="checkbox"
-            class="bg-transparent block border-b-2 inline text-2xl outline-none"
+            class="bg-transparent  outline-none"
             name="is_published">
 
+            <input
+            type="text"
+            name="user_id"
+            placeholder="user_id..."
+            value="{{ Auth::user()->id }}"
+            class="hidden"
+            class="bg-transparent block border-b-2 w-full h-20 text-2xl outline-none">
+            
         <input
             type="text"
             name="title"
