@@ -39,17 +39,18 @@
 <div class="w-4/5 mx-auto">
     <div class="text-center pt-5">
         <h1 class="text-2xl text-gray-700">
-            Add new post
+          Edit: {{ $posts->title }}
         </h1>
         <hr class="border border-1 border-gray-300 mt-10">
     </div>
 
 <div class="m-auto pt-5">
     <form
-        action="{{ route('blog.store') }}"
+        action="{{ route('blog.update', $posts->id) }}"
         method="POST"
         enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
 
         <label for="is_published" class="text-gray-500 text-1">
             Is Published
@@ -57,7 +58,7 @@
 
         <input
             type="checkbox"
-            checked
+           {{ $posts->is_published=== true ? 'checked' : '' }}
             class="bg-transparent  outline-none"
             name="is_published">
 
@@ -65,35 +66,37 @@
             type="text"
             name="user_id"
             placeholder="user_id..."
-            value="{{ Auth::user()->id }}"
+            value="{{ $posts->user->id }}"
             class="hidden"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
             
         <input
             type="text"
             name="title"
-            placeholder="Title..."
+           value="{{ $posts->title }}"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <br>
         <input
             type="text"
             name="excerpt"
-            placeholder="Excerpt..."
+          value="{{ $posts->excerpt }}"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <br>
         <input
             type="number"
             name="min_to_read"
-            placeholder="Minutes to read..."
+            value="{{ $posts->min_to_read }}"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <br>
         <textarea
             name="body"
             placeholder="Body..."
             rows ="6"
-            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
-            
-        <div class="bg-grey-lighter py-10">
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        {{ $posts->body }}
+        </textarea>
+<br>
+        <div class="bg-grey-lighter py-10 hidden">
             <label class="w-80 flex flex-col items-left px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                     <span class="mt-2 text-base leading-normal">
                         Select a file
@@ -101,6 +104,7 @@
                 <input
                     type="file"
                     name="image_path"
+              
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400">
             </label>
         </div>

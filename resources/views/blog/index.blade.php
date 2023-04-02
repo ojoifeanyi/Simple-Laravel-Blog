@@ -22,7 +22,7 @@
 
             <nav>
                 <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="#">Home</a></li>
+                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
                     @if (Auth::user())
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('dashboard') }}">Dashboard</a></li>
                     <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('logout') }}">Logout</a></li>
@@ -65,12 +65,20 @@
                     </a>
                 </h2>
 
-                <p class="text-gray-900 text-lg py-8 w-full break-words">
-                    {{ $post->excerpt }}
+                <p class="text-gray-900 text-lg py-4 w-full break-words mb-0">
+                    {{ $post->excerpt }} 
+                  
+                   @if (!$post->image_path)
+                       <div></div>
+                       @else
+                       <div class="w-90">  <img class="object-cover h-50 w-96" src=" {{ asset($post->image_path) }}"> </div>
+                   @endif
+                   
 
                 <span class="text-gray-500 text-sm sm:text-base">
                    <br> Posted by {{ $post->user->name }} on: {{ $post->created_at->format('d/m/y') }}
                 </span>
+            </p>
             </div>
         </div>
     </div>

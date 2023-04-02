@@ -41,11 +41,11 @@ class PostsController extends Controller
             'title' => $request->title,
             'excerpt' => $request->excerpt,
             'body' => $request->body,
-            'image_path' =>'temporary',
+            'image_path' => $this->storeImage($request),
             'is_published' =>$request->is_published==='on',
             'min_to_read' =>$request->min_to_read
         ]);
-        return redirect (route('blog.index'));
+        return redirect (Route('blog.index'));
     }
 
     /**
@@ -63,7 +63,9 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       return view ('blog.edit',[
+        'posts' => Post::where('id', $id)->first()
+       ]);
     }
 
     /**
@@ -71,7 +73,12 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      Post::where('id', $id)->update(
+        $request->except([
+            '_token','_method'
+            ]));
+
+      return redirect(route('blog.index'));
     }
 
     /**
@@ -79,6 +86,18 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::destroy($id);
+        return redirect(route('dashboard'))->with('message', 'Post Has been Deleted.');
+    }
+
+    private function storeImage(Request $request)
+    {
+        $newImageName = uniqid() . '-' . $request->title . '.' . $request->image_path->extension(); 
+
+        return $request->image_path->move(('images'), $newImageName);
+
+
+    
+
     }
 }
