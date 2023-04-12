@@ -17,7 +17,6 @@
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
                 @if (Auth::user())
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('dashboard') }}">Dashboard</a></li>
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('logout') }}">Logout</a></li>
                 @else
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
                 @endif

@@ -17,7 +17,6 @@
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
                 @if (Auth::user())
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('dashboard') }}">Dashboard</a></li>
-                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('logout') }}">Logout</a></li>
                 @else
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
                 @endif
@@ -114,7 +113,7 @@
         <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            Submit Post
+            Update Post
         </button>
     </form>
 </div>

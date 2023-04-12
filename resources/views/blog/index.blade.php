@@ -16,40 +16,66 @@
     </title>
 </head>
 <body class="w-full h-full bg-gray-100">
-    <!-- Top Bar Nav -->
-    <nav class="w-full py-4 bg-blue-800 shadow">
-        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
 
-            <nav>
-                <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
-                    @if (Auth::user())
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('dashboard') }}">Dashboard</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('logout') }}">Logout</a></li>
-                    @else
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
-                    <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('register') }}">Register</a></li>
-                    @endif
-                   
-                </ul>
-            </nav>
+ <!-- Top Bar Nav -->
+ <nav class="w-full py-4 bg-blue-800 shadow">
+  <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
 
-            <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
-                Free Blog Article Site  
-            </div>
-    
-        </div>
+      <nav>
+          <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+              <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
+              @if (Auth::user())
+              <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('dashboard') }}">Dashboard</a></li>
+              @else
+              <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
+              @endif
+             
+          </ul>
+      </nav>
 
-    </nav>
+      <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
+          Free Blog Article Site  
+      </div>
+
+  </div>
+
+</nav>
+
+
+
+
+
+ 
+<!-- component -->
+<div class="max-w-screen-lg mx-auto">
+    <!-- header -->
+
+    <!-- header ends here -->
+
+    <main class="mt-12 w-4/5 mx-auto">
+     
+
+      <!-- popular posts -->
+      <!--<div class="flex mt-16 mb-4 px-4 lg:px-0 items-center justify-between">
+        <h2 class="font-bold text-3xl">Popular news</h2>
+        <a class="bg-gray-200 hover:bg-green-200 text-gray-800 px-3 py-1 rounded cursor-pointer">
+          View all
+        </a>
+      </div> -->
+
+      <br>
+
+
+   
 
 
     <div class="w-4/5 mx-auto">
         
       @if (Auth::user())
-      <div class="py-10 sm:py-10">
-        <a class="primary-btn inline text-base sm:text-xl bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
+      <div class=" py-10 sm:py-10">
+        <a class="primary-btn inline text-base  bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
            href="{{ route ('blog.create') }}">
-            New Post
+           Create New Post
         </a>
     </div>
       @endif
@@ -57,10 +83,10 @@
     </div>
 
     @foreach ($posts as $post)
-    <div class="w-4/5 mx-auto pb-10">
+    <div class="w-full mx-auto pb-10">
         <div class="bg-white pt-10 rounded-lg drop-shadow-2xl sm:basis-3/4 basis-full sm:mr-8 pb-10 sm:pb-0">
             <div class="w-11/12 mx-auto pb-10">
-                <h2 class="text-gray-900 text-2xl font-bold pt-6 pb-0 sm:pt-0 hover:text-gray-700 transition-all">
+                <h2 class="text-gray-900 text-2xl font-bold pt-0 pb-0 sm:pt-0 hover:text-gray-700 transition-all">
                     <a href="{{ route ('blog.show',$post->id) }}">
                         {{ $post->title }}
                     </a>
