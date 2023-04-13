@@ -19,13 +19,14 @@
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('dashboard') }}">Dashboard</a></li>
                 @else
                 <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('register') }}">Register</a></li>
                 @endif
                
             </ul>
         </nav>
 
         <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
-            Free Blog Article Site  
+          
         </div>
 
     </div>

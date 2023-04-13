@@ -16,6 +16,34 @@
     
 </head>
 <body>
+
+ <!-- Top Bar Nav -->
+ <nav class="w-full py-4 bg-blue-800 shadow">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+  
+        <nav>
+            <ul class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline">
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('blog.index') }}">Home</a></li>
+                @if (Auth::user())
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ Route('dashboard') }}">Dashboard</a></li>
+                @else
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('login') }}">Login</a></li>
+                <li><a class="hover:text-gray-200 hover:underline px-4" href="{{ __('register') }}">Register</a></li>
+                @endif
+               
+            </ul>
+        </nav>
+  
+        <div class="flex items-center justify-between font-bold text-sm text-white uppercase no-underline px-10">
+             
+        </div>
+  
+    </div>
+  
+  </nav>
+
+
+
     <div class="w-4/5 mx-auto">
         <div class="pt-10">
             <a href="{{ URL::previous() }}"
@@ -30,20 +58,20 @@
 
         <div class="block lg:flex flex-row">
             <div class="basis-9/12 text-center sm:block sm:text-left">
-                <span class="text-left sm:text-center sm:text-left sm:inline block text-gray-900 pb-10 sm:pt-0 pt-0 sm:pt-10 pl-0 sm:pl-4 -mt-8 sm:-mt-0">
+                <span class="text-left sm:text-center sm:text-left sm:inline block text-gray-900 pb-1 sm:pt-0 pt-0 sm:pt-10 pl-0 sm:pl-4 -mt-8 sm:-mt-0">
                    Posted on:
                  
-                     {{ $posts->created_at }}
+                     {{ $posts->created_at->format('d/m/y')}}
                 </span>
             </div>
         </div>
 
         <div class="pt-10 pb-10 text-gray-900 text-xl">
-            <p class="font-bold text-2xl text-black pt-10">
-              {{$posts->excerpt}}
+            <p class="font-bold text-2xl text-black pt-0">
+                <img class="object-cover h-50 w-full" src=" {{ asset($posts->image_path) }}">
             </p>
 
-            <p class="text-base text-black pt-10">
+            <p class="text-base text-black pt-0" style="position:relative;white-space:pre-line;word-break:;overflow-wrap: break-word;">
               {{$posts->body}}
             </p>
         </div>
