@@ -12,7 +12,7 @@
     />
     @vite('resources/css/app.css')
     <title>
-        Laravel App
+        Simple Blog - Laravel App
     </title>
 </head>
 <body class="w-full h-full bg-gray-100">
