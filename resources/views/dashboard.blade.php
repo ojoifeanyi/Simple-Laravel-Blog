@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 white:text-gray-200 leading-tight">
             {{ __('Dashboard') }} 
         </h2>
     </x-slot>
@@ -13,9 +13,9 @@
                 </div>
             </div>-->
 
-<div>
+<div align="center">
     <h1 class="pt-0 pb-8 text-xl font-bold">
-        Posts of: {{ Auth::user()->name }}
+        Posts of: {{ Auth::user()->name }} 
     </h1>
 </div>
 
