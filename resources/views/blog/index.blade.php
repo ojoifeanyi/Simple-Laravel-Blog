@@ -72,7 +72,7 @@
     <div class="w-4/5 mx-auto">
         
       @if (Auth::user())
-      <div class=" py-10 sm:py-10">
+      <div class=" pb-10 pt-0 sm:pb-10 sm:pt-0">
         <a class="primary-btn inline text-base  bg-blue-500 py-4 px-4 shadow-xl rounded-xl transition-all hover:bg-gray-400"
            href="{{ route ('blog.create') }}">
            Create New Post
